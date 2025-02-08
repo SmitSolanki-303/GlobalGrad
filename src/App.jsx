@@ -4,11 +4,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Header from "./components/Header/Header"
 import IntroductionPage from "./components/IntroductionPage/IntroductionPage"
 import TechStack from "./components/TechStack/TechStack"
-import Project from "./components/Projects/Project"
+import Projects from "./components/Projects/Projects"
 import Education from "./components/Education/Education"
 import Experience from "./components/Experience/Experience"
 import Footer from "./components/Footer/Footer"
 import { useEffect, useRef } from 'react'
+import Achievements from './components/Achievements/Achievements'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -47,9 +48,10 @@ const App = () => {
       <main className="font-montserrat overflow-hidden">
         <IntroductionPage/>
         <TechStack/>
-        <Project/>
+        <Projects/>
         <Education/>
         <Experience/>
+        <Achievements/>
       </main>
       <Footer/>
     </>

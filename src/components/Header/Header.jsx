@@ -16,9 +16,8 @@ const Header = () => {
             <div className="text-xl sm:text-2xl">
                 <button
                     onClick={() => scrollToSection('introduction')}
-                    className="font-montserrat font-medium"
                 >
-                    Smit Solanki
+                    <span className="font-sans font-bold text-4xl text-purple-600">Smit Solanki</span>
                 </button>
             </div>
 

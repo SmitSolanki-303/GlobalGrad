@@ -1,4 +1,4 @@
-import EducationCards from "./EducationCards"
+import EducationCard from "./EducationCard"
 
 const educationQualifications = [
     {
@@ -47,7 +47,7 @@ const Education = () => {
                 <div className="relative">
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-purple-200"></div>
                 {educationQualifications.map((education, index) => (
-                    <EducationCards key={index} {...education} isLeft={index % 2 === 0} />
+                    <EducationCard key={index} {...education} isLeft={index % 2 === 0} />
                 ))}
                 </div>
             </div>

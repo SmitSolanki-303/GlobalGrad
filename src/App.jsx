@@ -2,8 +2,9 @@ import { BrowserRouter as Router } from "react-router-dom"
 import Header from "./components/Header/Header"
 import IntroductionPage from "./components/IntroductionPage/IntroductionPage"
 import TechStack from "./components/TechStack/TechStack"
-import Projects from "./components/Projects/Projects"
+import Projects from "./components/Projects/Project"
 import Education from "./components/Education/Education"
+import Experience from "./components/Experience/Experience"
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <TechStack/>
         <Projects/>
         <Education/>
+        <Experience/>
       </main>
     </>
   )

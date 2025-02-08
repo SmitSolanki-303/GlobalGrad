@@ -21,7 +21,9 @@ const TechStack = () => {
 
         {/* Skills */}
         <div className="w-1/2 flex flex-col justify-center">
-            <h2 className="font-normal text-2xl sm:text-3xl md:text-4xl mb-6">My Tech Stack</h2>
+            <h2 className="font-semibold text-3xl sm:text-4xl md:text-5xl mb-6">
+                My Tech Stack<span className="text-purple-600">.</span>
+            </h2>
             <p className="text-lg sm:text-xl md:text-2xl mb-8 text-gray-600">Here are some of the technologies I work with:</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 {skills.map((skill, index) => (

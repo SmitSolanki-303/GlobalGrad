@@ -6,7 +6,7 @@ const IntroductionPage = () => {
         <main className='w-screen overflow-hidden flex px-4 sm:px-6 md:px-8 py-4 sm:py-6 md:py-8 '>
             <div className='w-1/2 flex flex-col justify-center'>
                 <h1 className='font-semibold text-2xl sm:w-4xl md:text-6xl'>
-                    Hi all, I'm Smit.
+                    Hi all, I'm <span className="text-purple-600">Smit</span>
                 </h1>
                 <p className='h-4 sm:h-6 md:h-8'></p>
                 <p className='text-lg sm:text-xl md:text-2xl text-gray-600'>
@@ -69,7 +69,7 @@ const IntroductionPage = () => {
                 </button>
             </div>
 
-            <div className='w-1/2 flex justify-center'>
+            <div className='w-2/2 flex justify-center'>
                 <img
                     src={HeroImage}
                     className='w-full h-fit object-cover'

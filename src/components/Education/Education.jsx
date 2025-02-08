@@ -38,7 +38,7 @@ const educationQualifications = [
 
 const Education = () => {
     return (
-        <section className="w-screen overflow-hidden px-4 sm:px-6 md:px-8 py-12 md:py-24 lg:py-32 bg-gray-50">
+        <section id="education" className="w-screen overflow-hidden px-4 sm:px-6 md:px-8 py-12 md:py-24 lg:py-32 bg-gray-50">
             <div className="max-w-7xl mx-auto">
                 <h2 className="font-semibold text-3xl sm:text-4xl md:text-5xl mb-12 text-left">
                 Education Qualifications<span className="text-purple-600">.</span>

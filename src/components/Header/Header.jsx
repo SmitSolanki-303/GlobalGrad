@@ -1,51 +1,63 @@
 
 const Header = () => {
+
+    const scrollToSection = (sectionId) => {
+        const element = document.getElementById(sectionId);
+        if(element) {
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    };
+
     return (
         <header className="px-4 sm:px-6 py-4 sm:py-6 sticky top-0 left-0 z-50 w-full bg-white flex justify-between">
             <div className="text-xl sm:text-2xl">
-                <a
-                    href="/"
+                <button
+                    onClick={() => scrollToSection('introduction')}
                     className="font-montserrat font-medium"
                 >
                     Smit Solanki
-                </a>
+                </button>
             </div>
 
             <div className="flex space-x-10 text-xl sm:text-2xl font-montserrat">
-                <a
-                    href="/"
-                    className=""
+
+                <button
+                    onClick={() => scrollToSection('skills')}
+                    className="hover:text-purple-600 transition-colors"
                 >
                     Skills
-                </a>
+                </button>
 
-                <a
-                    href="/"
-                    className=""
+                <button
+                    onClick={() => scrollToSection('education')}
+                    className="hover:text-purple-600 transition-colors"
                 >
                     Education
-                </a>
+                </button>
 
-                <a
-                    href="/"
-                    className=""
+                <button
+                    onClick={() => scrollToSection('experience')}
+                    className="hover:text-purple-600 transition-colors"
                 >
                     Work Experience
-                </a>
+                </button>
 
-                <a
-                    href="/"
-                    className=""
+                <button
+                    onClick={() => scrollToSection('achievements')}
+                    className="hover:text-purple-600 transition-colors"
                 >
                     Achievements
-                </a>
+                </button>
 
-                <a
-                    href="/"
-                    className=""
+                <button
+                    onClick={() => scrollToSection('contact')}
+                    className="hover:text-purple-600 transition-colors"
                 >
                     Contact Me
-                </a>
+                </button>
             </div>
         </header>
     )

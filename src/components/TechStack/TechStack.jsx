@@ -14,7 +14,7 @@ const TechStack = () => {
     ]
 
     return (
-        <section className="w-screen overflow-hidden flex px-4 sm:px-6 md:px-8 py-4 md:py-6 md:py-8">
+        <section id="skills" className="w-screen overflow-hidden flex px-4 sm:px-6 md:px-8 py-4 md:py-6 md:py-8">
         <div className="w-1/2 flex justify-center">
             <img src={HeroImage || "/placeholder.svg"} className="w-full h-fit object-cover" alt="Tech illustration" />
         </div>

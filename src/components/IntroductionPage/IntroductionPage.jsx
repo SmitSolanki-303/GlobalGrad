@@ -3,7 +3,7 @@ import HeroImage from './mockup.png'
 
 const IntroductionPage = () => {
     return (
-        <main className='w-screen overflow-hidden flex t px-4 sm:px-6 md:px-8 py-4 md:py-6 md:py-8 '>
+        <main className='w-screen overflow-hidden flex px-4 sm:px-6 md:px-8 py-4 sm:py-6 md:py-8 '>
             <div className='w-1/2 flex flex-col justify-center'>
                 <h1 className='font-semibold text-2xl sm:w-4xl md:text-6xl'>
                     Hi all, I'm Smit.

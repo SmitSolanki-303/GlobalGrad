@@ -1,3 +1,4 @@
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 const Header = () => {
 
@@ -21,7 +22,7 @@ const Header = () => {
                 </button>
             </div>
 
-            <div className="flex space-x-10 text-xl sm:text-2xl font-montserrat">
+            <div className="flex space-x-10 items-center text-xl sm:text-2xl font-montserrat">
 
                 <button
                     onClick={() => scrollToSection('skills')}
@@ -57,6 +58,10 @@ const Header = () => {
                 >
                     Contact Me
                 </button>
+
+                <div className="">
+                    <ToggleSwitch/>
+                </div>
             </div>
         </header>
     )

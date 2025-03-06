@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUser, FaGraduationCap, FaBriefcase, FaProjectDiagram, FaTools, FaAward } from "react-icons/fa";
-import { FaCloudUploadAlt } from "react-icons/fa";
 
+// Import all the step components
+import PersonalDetails from './PersonalDetails/PersonalDetails';
+import EducationQualification from './EducationQualification/EducationQualification';
+import WorkExperience from './WorkExperience/WorkExperience';
+import ProjectDetails from './ProjectDetails/ProjectDetails';
+import Skills from './Skills/Skills';
+import Achievement from './Achievement/Achievement';
 
 const steps = [
     { id: 1, icon: <FaUser />, title: "Personal Details", description: "Basic information to get started" },
@@ -12,9 +18,6 @@ const steps = [
     { id: 5, icon: <FaTools />, title: "Skills", description: "Your technical expertise" },
     { id: 6, icon: <FaAward />, title: "Achievement", description: "Your accomplishments" },
 ];
-
-
-const inputClass = "w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all";
 
 const StepItem = ({ step, selectedStep, onClick }) => (
     <div
@@ -40,46 +43,65 @@ const ProgressBar = ({ progress }) => (
         <div className="h-2 bg-gray-100 rounded-full">
             <div className="h-2 bg-pink-500 rounded-full transition-all duration-500" style={{ width: `${progress}%` }}></div>
         </div>
-        {/* <div className="mt-2 text-sm text-gray-500 text-right">
-            Step {progress / (100 / steps.length)} of {steps.length}
-        </div> */}
-    </div>
-);
-
-const ProfileUpload = ({ profilePic, handleProfileUpload }) => (
-    <div className="mb-8 text-center">
-        <div className="relative inline-block">
-            {profilePic ? (
-                <img src={profilePic} alt="Profile" className="w-32 h-32 rounded-full object-cover border-4 border-pink-200" />
-            ) : (
-                <div className="w-32 h-32 rounded-full bg-pink-50 flex items-center justify-center border-4 border-pink-200">
-                    <FaCloudUploadAlt className="w-12 h-12 text-pink-300" />
-                </div>
-            )}
-            <label className="absolute bottom-0 right-0 bg-pink-500 text-white p-2 rounded-full cursor-pointer hover:bg-pink-600 transition-colors">
-                <FaCloudUploadAlt />
-                <input type="file" className="hidden" onChange={handleProfileUpload} accept="image/*" />
-            </label>
-        </div>
     </div>
 );
 
 const DetailRegistration = () => {
-
-    const [profilePic, setProfilePic] = useState(null);
     const [selectedStep, setSelectedStep] = useState(1);
-    const navigate = useNavigate(); // Initialize useNavigate hook
+    const navigate = useNavigate();
 
-    const handleProfileUpload = (e) => {
-        const file = e.target.files[0];
-        setProfilePic(URL.createObjectURL(file));
+    // State for all form data
+    const [formData, setFormData] = useState({
+        personalDetails: {
+            profilePic: null,
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            dob: ''
+        },
+        educationQualifications: [],
+        workExperiences: [],
+        projectDetails: [],
+        skills: [],
+        achievements: []
+    });
+
+    // Update data for a specific section
+    const updateSectionData = (section) => (data) => {
+        setFormData(prev => ({
+            ...prev,
+            [section]: data
+        }));
     };
 
     const handleNext = () => {
         if (selectedStep < steps.length) {
             setSelectedStep((prev) => prev + 1);
         } else {
-            navigate('/portfolio-website'); // Redirect when "Complete" is clicked
+            console.log("Navigating to Portfolio Website...");
+            navigate('/portfolio-website');
+        }
+    };
+    
+
+    // Render the current step content
+    const renderStepContent = () => {
+        switch (selectedStep) {
+            case 1:
+                return <PersonalDetails data={formData.personalDetails} updateData={updateSectionData('personalDetails')} />;
+            case 2:
+                return <EducationQualification data={formData.educationQualifications} updateData={updateSectionData('educationQualifications')} />;
+            case 3:
+                return <WorkExperience data={formData.workExperiences} updateData={updateSectionData('workExperiences')} />;
+            case 4:
+                return <ProjectDetails data={formData.projectDetails} updateData={updateSectionData('projectDetails')} />;
+            case 5:
+                return <Skills data={formData.skills} updateData={updateSectionData('skills')} />;
+            case 6:
+                return <Achievement data={formData.achievements} updateData={updateSectionData('achievements')} />;
+            default:
+                return null;
         }
     };
 
@@ -108,56 +130,30 @@ const DetailRegistration = () => {
                     <div className="lg:w-2/3">
                         <div className="bg-white rounded-2xl shadow-xl p-8">
                             <ProgressBar progress={(selectedStep / steps.length) * 100} />
-                            <ProfileUpload profilePic={profilePic} handleProfileUpload={handleProfileUpload} />
+                            
+                            {/* Dynamic Form Content */}
+                            <div className="space-y-6">
+                                {renderStepContent()}
+                            </div>
 
-                            {/* Form Fields */}
-                            <form className="space-y-6">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                                        <input type="text" className={inputClass} placeholder="Enter your first name" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
-                                        <input type="text" className={inputClass} placeholder="Enter your last name" />
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                    <input type="email" className={inputClass} placeholder="you@example.com" />
-                                </div>
-
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                        <input type="tel" className={inputClass} placeholder="Enter your phone number" />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
-                                        <input type="date" className={inputClass} />
-                                    </div>
-                                </div>
-
-                                {/* Navigation Buttons */}
-                                <div className="flex justify-between pt-6">
-                                    <button
-                                        type="button"
-                                        className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition"
-                                        disabled={selectedStep === 1}
-                                        onClick={() => setSelectedStep((prev) => prev - 1)}
-                                    >
-                                        Back
-                                    </button>
-                                    <button
+                            {/* Navigation Buttons */}
+                            <div className="flex justify-between pt-6 mt-6">
+                                <button
+                                    type="button"
+                                    className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition"
+                                    disabled={selectedStep === 1}
+                                    onClick={() => setSelectedStep((prev) => prev - 1)}
+                                >
+                                    Back
+                                </button>
+                                <button
                                     type="button"
                                     className="px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition"
                                     onClick={handleNext}
                                 >
                                     {selectedStep === steps.length ? 'Complete' : 'Next'}
                                 </button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

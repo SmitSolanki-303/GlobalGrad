@@ -15,7 +15,7 @@ import { useEffect, useRef } from 'react'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const PortfolioWebsite = () => {
+const PortfolioWebsite = () => {    
 
     const lenisRef = useRef()
 

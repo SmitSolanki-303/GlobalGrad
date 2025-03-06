@@ -25,9 +25,9 @@ function HomePage() {
                         <button className='w-1/3 p-3 md:p-4 text-xl rounded-full bg-cyan-500 hover:bg-pink-400 text-white hover:text-black transition-colors duration-300'>
                             Start Building
                         </button>
-                        <button className='w-1/3 p-3 md:p-4 text-xl rounded-full border-2 border-cyan-500 hover:border-pink-400 text-cyan-500 hover:text-pink-400 transition-colors duration-300'>
+                        {/* <button className='w-1/3 p-3 md:p-4 text-xl rounded-full border-2 border-cyan-500 hover:border-pink-400 text-cyan-500 hover:text-pink-400 transition-colors duration-300'>
                             Explore Designs
-                        </button>
+                        </button> */}
                     </div>
                 </div>
 
